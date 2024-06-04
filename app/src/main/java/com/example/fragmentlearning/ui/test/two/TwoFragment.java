@@ -32,12 +32,8 @@ FragmentTwoBinding binding;
       binding.DuttonDecresment.setOnClickListener(mViewModel.DuttonDecresmentonClickListener);
       binding.ButtonReset.setOnClickListener(mViewModel.ButtonResetonClickListener);
 
-      mViewModel.getLiveCouunter().observe(getViewLifecycleOwner(), new Observer<String>() {
-          @Override
-          public void onChanged(String s) {
-              
-          }
-      });
+      mViewModel.getLiveCouunter().observe(getViewLifecycleOwner(),binding.TextViewCounter::setText);
+
         return binding.getRoot();
     }
 
