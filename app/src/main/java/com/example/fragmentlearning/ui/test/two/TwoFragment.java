@@ -1,5 +1,6 @@
 package com.example.fragmentlearning.ui.test.two;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -30,6 +31,13 @@ FragmentTwoBinding binding;
         binding.ButtonIncrement.setOnClickListener(mViewModel.ButtonIncrementonClickListener);
       binding.DuttonDecresment.setOnClickListener(mViewModel.DuttonDecresmentonClickListener);
       binding.ButtonReset.setOnClickListener(mViewModel.ButtonResetonClickListener);
+
+      mViewModel.getLiveCouunter().observe(getViewLifecycleOwner(), new Observer<String>() {
+          @Override
+          public void onChanged(String s) {
+              
+          }
+      });
         return binding.getRoot();
     }
 
