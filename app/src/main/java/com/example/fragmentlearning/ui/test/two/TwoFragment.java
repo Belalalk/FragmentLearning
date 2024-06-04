@@ -13,26 +13,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fragmentlearning.R;
+import com.example.fragmentlearning.databinding.FragmentTwoBinding;
 
 public class TwoFragment extends Fragment {
 
     private TwoViewModel mViewModel;
-
-    public static TwoFragment newInstance() {
-        return new TwoFragment();
-    }
+FragmentTwoBinding binding;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_two, container, false);
+        binding=FragmentTwoBinding.inflate(getLayoutInflater());
+      mViewModel=new ViewModelProvider(this).get(TwoViewModel.class);
+
+
+        binding.ButtonIncrement.setOnClickListener(mViewModel.ButtonIncrementonClickListener);
+      binding.DuttonDecresment.setOnClickListener(mViewModel.DuttonDecresmentonClickListener);
+      binding.ButtonReset.setOnClickListener(mViewModel.ButtonResetonClickListener);
+        return binding.getRoot();
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(TwoViewModel.class);
-        // TODO: Use the ViewModel
-    }
+
 
 }
